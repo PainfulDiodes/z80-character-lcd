@@ -82,7 +82,7 @@ lcd_data_wait_loop:	;Busy wait
 lcd_send_asciiz:
 	push af
 	push bc				;Preserve
-lcd_asciiz_char_loop
+lcd_asciiz_char_loop:
 	ld c,lcd_comm_port	;Command port
 	
 lcd_asciiz_wait_loop:	;Busy wait
