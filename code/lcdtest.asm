@@ -2,13 +2,13 @@
 ;Some simple test code to write commands and data to a 
 ;character LCD display
 ;
-;Tested with the RASM assembler
+;Tested with the z88dk-z80asm assembler
 ;********************
 	org $8000
 	
-	lcd_comm_port equ $20	;Port addresses. Change as needed.
-	lcd_data_port equ $21
-	
+	lcd_comm_port equ 4	;Port addresses. Change as needed.
+	lcd_data_port equ 5
+
 	lcd_set_8bit equ $3f	;8-bit port, 2-line display
 	lcd_cursor_on equ $0f	;Turn cursors on
 	lcd_cls equ $01			;Clear the display
@@ -31,7 +31,7 @@
 	ld hl,hello_world
 	call lcd_send_asciiz
 	
-	ret
+	jp 0
 	
 hello_world:
 	db "Hello, world!",0
@@ -82,7 +82,7 @@ lcd_data_wait_loop:	;Busy wait
 lcd_send_asciiz:
 	push af
 	push bc				;Preserve
-lcd_asciiz_char_loop
+lcd_asciiz_char_loop:
 	ld c,lcd_comm_port	;Command port
 	
 lcd_asciiz_wait_loop:	;Busy wait

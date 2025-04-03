@@ -1,6 +1,8 @@
-Blog/
-*-cache*
-*.dcm
-*.lib
-*-table
-*.*-bak
+*.bin
+*.hex
+*.ihx
+*.o
+*.lis
+*.map
+*.sym
+.DS_Store
